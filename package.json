@@ -7,6 +7,7 @@
   "author": "Donald Stolz <donaldtstolz@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^6.1.0",
     "twitter": "^1.7.1"
   }
 }
