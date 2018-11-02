@@ -1,13 +1,13 @@
 {
-  "name": "Yellow-Brick-Road-Bot",
-  "version": "0.0.1",
-  "description": "Node.js Twitter bot created for 42 - Silicon Valley's Yellow Brick Road project",
-  "main": "app.js",
-  "repository": "https://github.com/donald-stolz/42-TwitterBot.git",
-  "author": "Donald Stolz <donaldtstolz@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^6.1.0",
-    "twitter": "^1.7.1"
-  }
+    "name": "yellow-brick-road-bot",
+    "version": "0.0.1",
+    "description": "Node.js Twitter bot created for 42 - Silicon Valley's Yellow Brick Road project",
+    "main": "app.js",
+    "repository": "https://github.com/donald-stolz/42-TwitterBot.git",
+    "author": "Donald Stolz <donaldtstolz@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^6.1.0",
+        "twit": "^2.2.11"
+    }
 }
