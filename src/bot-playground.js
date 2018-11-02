@@ -22,7 +22,7 @@ const bot = new Twit(config);
 
 // Get 42's 10 most recent followers
 // bot.get(
-//     'followers/list',
+//     'followers/list', //ids for just
 //     {
 //         screen_name: '42SiliconValley',
 //         count: 1,
@@ -44,9 +44,101 @@ const bot = new Twit(config);
 //         data.users.forEach(user => console.log(user.screen_name));
 //     }
 // });
-// Get my 5 most recent followers
+
+// Get my 5 most recent follows
+// bot.get('friends/list', { count: 5 }, (err, data, response) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log(data);
+//     }
+// });
+
+// Follow @TheTechMuseum
+// bot.post(
+//     'friendships/create',
+//     {
+//         screen_name: 'TheTechMuseum',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data);
+//         }
+//     }
+// );
+
+// Get connections[] with EK_TKE
 // bot.get(
-//     'friends/list',
+//     'friendships/lookup',
+//     {
+//         screen_name: 'EK_TKE',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data);
+//         }
+//     }
+// );
+
+// Send a DM to 42SiliconValley
+// bot.get(
+//     'friendships/lookup',
+//     {
+//         screen_name: '42SiliconValley',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data);
+//             bot.post(
+//                 'direct_messages/events/new',
+//                 {
+//                     event: {
+//                         type: 'message_create',
+//                         message_create: {
+//                             target: { recipient_id: data[0].id },
+//                             message_data: {
+//                                 text:
+//                                     'Hey. You can ignore this I had to test my twitter bot.',
+//                             },
+//                         },
+//                     },
+//                 },
+//                 (err, data, response) => {
+//                     if (err) {
+//                         console.log(err);
+//                     } else {
+//                         console.log(data);
+//                     }
+//                 }
+//             );
+//         }
+//     }
+// );
+
+// Get the most recent tweet from my timeline
+// bot.get(
+//     'statuses/home_timeline',
+//     {
+//         count: 1,
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data);
+//         }
+//     }
+// );
+
+// Get less info on the 5 most recent tweets in my timeline
+// bot.get(
+//     'statuses/home_timeline',
 //     {
 //         count: 5,
 //     },
@@ -54,7 +146,109 @@ const bot = new Twit(config);
 //         if (err) {
 //             console.log(err);
 //         } else {
-//             console.log(data);
+//             data.forEach(t => {
+//                 console.log(t.text);
+//                 console.log(t.user.screen_name);
+//                 console.log(t.id_str);
+//                 console.log('\n');
+//             });
+//         }
+//     }
+// );
+
+// Get 5 most recent tweets from my timeline
+// bot.get(
+//     'statuses/user_timeline',
+//     {
+//         count: 5,
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             data.forEach(t => {
+//                 console.log(t.text);
+//                 console.log(t.user.screen_name);
+//                 console.log(t.id_str);
+//                 console.log('\n');
+//             });
+//         }
+//     }
+// );
+
+// Following examples use this Bloomberg tweet:
+// https://twitter.com/business/status/1058404570852933632
+// Retweet tweet
+// bot.post(
+//     'statuses/retweet/:id',
+//     {
+//         id: '1058404570852933632',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(`${data.text} retweet success!`);
+//         }
+//     }
+// );
+
+// Unretweet tweet
+// bot.post(
+//     'statuses/unretweet/:id',
+//     {
+//         id: '1058404570852933632',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(`${data.text} unretweet success!`);
+//         }
+//     }
+// );
+
+// Favorite tweet
+// bot.post(
+//     'favorites/create',
+//     {
+//         id: '1058404570852933632',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(`${data.text} tweet liked!`);
+//         }
+//     }
+// );
+
+// Favorite tweet
+// bot.post(
+//     'favorites/destroy',
+//     {
+//         id: '1058404570852933632',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(`${data.text} tweet unliked!`);
+//         }
+//     }
+// );
+
+// Delet a tweet
+// bot.post(
+//     'statuses/destroy/:id',
+//     {
+//         id: '244825273214836738',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(`${data.text} tweet deleted!`);
 //         }
 //     }
 // );
