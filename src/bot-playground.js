@@ -252,3 +252,44 @@ const bot = new Twit(config);
 //         }
 //     }
 // );
+
+// Query 42 Silicon Valley
+// bot.get(
+//     'search/tweets',
+//     {
+//         q: '42 silicon valley',
+//         count: 5,
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             data.statuses.forEach(s => {
+//                 console.log(s.text);
+//                 console.log(s.user.screen_name);
+//                 console.log('\n');
+//             });
+//         }
+//     }
+// );
+
+// Lookup 42's id then stream them
+// bot.get(
+//     'friendships/lookup',
+//     {
+//         screen_name: '42SiliconValley',
+//     },
+//     (err, data, response) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data[0].id);
+//         }
+//     }
+// );
+// const stream = bot.stream('statuses/filter', {
+//     follow: '',
+// });
+// stream.on('tweet', t => {
+//     console.log(`${t.text}\n`);
+// });
