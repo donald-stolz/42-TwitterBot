@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "dotenv": "^6.1.0",
+        "tabletop": "^1.5.2",
         "twit": "^2.2.11"
     }
 }

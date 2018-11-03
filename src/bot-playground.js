@@ -2,6 +2,7 @@
 
 const Twit = require('twit');
 const config = require('./config');
+const Tabletop = require('tabletop');
 
 const bot = new Twit(config);
 
@@ -274,22 +275,44 @@ const bot = new Twit(config);
 // );
 
 // Lookup 42's id then stream them
-// bot.get(
-//     'friendships/lookup',
-//     {
-//         screen_name: '42SiliconValley',
-//     },
-//     (err, data, response) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data[0].id);
-//         }
-//     }
-// );
-// const stream = bot.stream('statuses/filter', {
-//     follow: '',
-// });
-// stream.on('tweet', t => {
-//     console.log(`${t.text}\n`);
-// });
+const getId = async handle => {
+    let id = await bot
+        .get('friendships/lookup', {
+            screen_name: handle,
+        })
+        .then(function(result) {
+            if (result.data) {
+                return result.data[0].id;
+            } else {
+                console.console.error(result.statusCode, result.statusMessage);
+            }
+        });
+
+    return id;
+};
+
+const stream = async handle => {
+    const id = await getId('42SiliconValley');
+
+    const stream = bot.stream('statuses/filter', {
+        follow: id,
+    });
+    console.log(`Following @${handle} - id: ${id}`);
+    stream.on('tweet', t => {
+        console.log(`${t.text}\n`);
+    });
+};
+
+// stream('42SiliconValley');
+
+const spreadsheetUrl =
+    'https://docs.google.com/spreadsheets/d/1I0uI-ZtVAVgX8-zFWO9p-wf9hFfCIRoPV3BPz9-FkiM/edit?usp=sharing';
+
+Tabletop.init({
+    key: spreadsheetUrl,
+    callback(data, tabletop) {
+        console.log(data);
+        // Data: { Tweets: 'text' }
+    },
+    simpleSheet: true,
+});
