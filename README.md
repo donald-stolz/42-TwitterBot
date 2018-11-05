@@ -2,6 +2,12 @@
 
 Node.js Twitter bot created for 42 - Silicon Valley's Yellow Brick Road project
 
+## ToDo
+
+-   [ ] Wire up tin-man
+-   [ ] Add jest testing
+-   [ ] Deploy to now
+
 ## Packages
 
 [twit](https://www.npmjs.com/package/twit)  

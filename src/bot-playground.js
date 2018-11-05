@@ -1,10 +1,10 @@
 // bot.js
 
-const Twit = require('twit');
-const config = require('./config');
-const Tabletop = require('tabletop');
+// const Twit = require('twit');
+// const config = require('./config');
+// const Tabletop = require('tabletop');
 
-const bot = new Twit(config);
+// const bot = new Twit(config);
 
 // Tweet "hello world!"
 // bot.post(
@@ -239,7 +239,7 @@ const bot = new Twit(config);
 //     }
 // );
 
-// Delet a tweet
+// Delete a tweet
 // bot.post(
 //     'statuses/destroy/:id',
 //     {
@@ -275,44 +275,45 @@ const bot = new Twit(config);
 // );
 
 // Lookup 42's id then stream them
-const getId = async handle => {
-    let id = await bot
-        .get('friendships/lookup', {
-            screen_name: handle,
-        })
-        .then(function(result) {
-            if (result.data) {
-                return result.data[0].id;
-            } else {
-                console.console.error(result.statusCode, result.statusMessage);
-            }
-        });
+// const getId = async handle => {
+//     let id = await bot
+//         .get('friendships/lookup', {
+//             screen_name: handle,
+//         })
+//         .then(function(result) {
+//             if (result.data) {
+//                 return result.data[0].id;
+//             } else {
+//                 console.error(result.statusCode, result.statusMessage);
+//             }
+//         });
 
-    return id;
-};
+//     return id;
+// };
 
-const stream = async handle => {
-    const id = await getId('42SiliconValley');
+// const stream = async handle => {
+//     const id = await getId(handle);
 
-    const stream = bot.stream('statuses/filter', {
-        follow: id,
-    });
-    console.log(`Following @${handle} - id: ${id}`);
-    stream.on('tweet', t => {
-        console.log(`${t.text}\n`);
-    });
-};
-
+//     const stream = bot.stream('statuses/filter', {
+//         follow: id,
+//     });
+//     console.log(`Following @${handle} - id: ${id}`);
+//     stream.on('tweet', t => {
+//         console.log(`${t.text}\n`);
+//     });
+// };
 // stream('42SiliconValley');
 
-const spreadsheetUrl =
-    'https://docs.google.com/spreadsheets/d/1I0uI-ZtVAVgX8-zFWO9p-wf9hFfCIRoPV3BPz9-FkiM/edit?usp=sharing';
+// Tweet from a spreadsheet
+// const spreadsheetUrl =
+//     'https://docs.google.com/spreadsheets/d/1I0uI-ZtVAVgX8-zFWO9p-wf9hFfCIRoPV3BPz9-FkiM/edit?usp=sharing';
 
-Tabletop.init({
-    key: spreadsheetUrl,
-    callback(data, tabletop) {
-        console.log(data);
-        // Data: { Tweets: 'text' }
-    },
-    simpleSheet: true,
-});
+// Tabletop.init({
+//     key: spreadsheetUrl,
+//     callback(data, tabletop) {
+//         console.log(data);
+//         // Data: { Tweets: 'text' }
+//         // Call forEach tweet(data)
+//     },
+//     simpleSheet: true,
+// });
