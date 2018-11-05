@@ -7,6 +7,8 @@ Node.js Twitter bot created for 42 - Silicon Valley's Yellow Brick Road project
 -   [ ] Wire up tin-man
 -   [ ] Add jest testing
 -   [ ] Deploy to now
+-   [ ] Setup Markov bot for DMs
+-   [ ] Setup bot to create tweets
 
 ## Packages
 

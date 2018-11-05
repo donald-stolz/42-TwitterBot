@@ -14,7 +14,6 @@ const stream = async (handle, callback) => {
     });
     console.log(`Following @${handle} - id: ${id}`);
     stream.on('tweet', t => {
-        console.log(`${t.text}\n`);
         callback(t);
     });
 };

@@ -16,6 +16,16 @@ const tweet = status => {
     }
 };
 
+const getStats = async id => {
+    try {
+        const resp = await bot.get('statuses/show/:id', { id });
+        return resp.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+// ToDo turn into intreval post method
 const dailyPost = async () => {
     Tabletop.init({
         key: spreadsheetUrl,
@@ -28,4 +38,4 @@ const dailyPost = async () => {
     });
 };
 
-module.exports = { tweet, dailyPost };
+module.exports = { tweet, getStats, dailyPost };
