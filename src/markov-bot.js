@@ -35,4 +35,3 @@ const tweetData = fs
             .substring(0, 140);
         tweet(sentence);
     });
-console.log(filePath);
