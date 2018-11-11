@@ -2,6 +2,7 @@ const fs = require('fs');
 const csvparse = require('csv-parse');
 const rita = require('rita');
 const { tweet } = require('./tweet');
+const path = require('path');
 const filePath = path.join(__dirname, '../data/tweets.csv');
 
 function cleanText(text) {

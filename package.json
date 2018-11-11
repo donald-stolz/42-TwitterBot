@@ -8,7 +8,8 @@
     "license": "MIT",
     "scripts": {
         "start": "node index.js",
-        "start-watch": "nodemon index.js"
+        "start-watch": "nodemon index.js",
+        "deploy": "now --public -e CONSUMER_KEY=@c_api_key -e CONSUMER_SECRET=@c_api_secret -e ACCESS_TOKEN=@a_token  -e ACCESS_TOKEN_SECRET=@a_token_secret"
     },
     "dependencies": {
         "csv-parse": "^3.1.3",

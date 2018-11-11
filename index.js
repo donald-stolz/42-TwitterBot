@@ -1,3 +1,3 @@
 // index.js
 
-require('./src/bot-playground');
+require('./src/tin-man');

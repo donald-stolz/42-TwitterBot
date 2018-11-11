@@ -1,5 +1,11 @@
 const { dailyPost, getStats } = require('./tweet');
 const { stream, favorite, retweet } = require('./engage');
+const fs = require('fs');
+const path = require('path');
+const filePath = path.join(__dirname, '../data/buzzwords.json');
+const JSONwords = fs.readFileSync(filePath);
+const buzzwords = JSON.parse(JSONwords);
+
 const hour = 1000 * 60 * 60;
 
 // Tweet every 24 hours?
@@ -17,13 +23,25 @@ const check42 = async tweet => {
         }
     }, 3 * hour);
 };
-stream('42SiliconValley', check42);
 
-// Follow bloomberg and THN.
+// Follow Wired and THN.
 // Retweet/Favorite any tweet that matches a list of tech words
 const checkTech = async tweet => {
     const id = tweet.id_str;
     // Check list
+    if (buzzwords.some(word => tweet.text.includes(word))) {
+        retweet(id);
+        favorite(id);
+    } else {
+        // else check popularity
+        setTimeout(async () => {
+            t = await getStats(id);
+            if (t.retweet_count > 30) {
+                retweet(id);
+                favorite(id);
+            }
+        }, hour);
+    }
 };
 
 // Follow TED Talks
@@ -39,3 +57,10 @@ const checkTED = tweet => {
         }
     }, hour);
 };
+
+stream('42SiliconValley', check42);
+stream('WIRED', checkTech);
+stream('WIREDScience', checkTech);
+stream('TheHackersNews', checkTech);
+stream('elonmusk', checkTech);
+stream('TEDTalks', checkTED);
