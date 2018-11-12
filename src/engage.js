@@ -14,7 +14,9 @@ const stream = async (handle, callback) => {
     });
     console.log(`Following @${handle} - id: ${id}`);
     stream.on('tweet', t => {
-        callback(t);
+        if (t.user.screen_name === handle) {
+            callback(t);
+        }
     });
 };
 

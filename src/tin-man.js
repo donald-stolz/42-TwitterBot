@@ -1,3 +1,6 @@
+// listen on port so now.sh likes it
+const { createServer } = require('http');
+
 const { dailyPost, getStats } = require('./tweet');
 const { stream, favorite, retweet } = require('./engage');
 const fs = require('fs');
@@ -64,3 +67,13 @@ stream('WIREDScience', checkTech);
 stream('TheHackersNews', checkTech);
 stream('elonmusk', checkTech);
 stream('TEDTalks', checkTED);
+
+// This will allow the bot to run on now.sh
+const server = createServer((req, res) => {
+    res.writeHead(302, {
+        Location: `https://twitter.com/donstolz`,
+    });
+    res.end();
+});
+
+server.listen(process.env.PORT ? process.env.PORT : 3000);
