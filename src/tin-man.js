@@ -18,6 +18,8 @@ const hour = 1000 * 60 * 60;
 const check42 = async tweet => {
     const id = tweet.id_str;
     favorite(id);
+    console.log('42 Tweet');
+    console.log(tweet);
     setTimeout(async () => {
         t = await getStats(id);
         // Check retweets
@@ -40,6 +42,8 @@ const checkTech = async tweet => {
         setTimeout(async () => {
             t = await getStats(id);
             if (t.retweet_count > 30) {
+                console.log('Favoriting & Retweeting');
+                console.log(t);
                 retweet(id);
                 favorite(id);
             }
@@ -55,6 +59,8 @@ const checkTED = tweet => {
     setTimeout(async () => {
         t = await getStats(id);
         if (t.retweet_count > 30) {
+            console.log('Favoriting & Retweeting');
+            console.log(t);
             retweet(id);
             favorite(id);
         }
