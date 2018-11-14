@@ -89,5 +89,6 @@ server.listen(process.env.PORT ? process.env.PORT : 3000);
 
 // Keep awake
 setInterval(function() {
+    console.log('Awake');
     http.get('http://tin-man.herokuapp.com');
 }, 1000 * 60 * 5); // ping every 5 minutes
