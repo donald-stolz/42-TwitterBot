@@ -5,6 +5,7 @@ const { dailyPost, getStats } = require('./tweet');
 const { stream, favorite, retweet } = require('./engage');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const filePath = path.join(__dirname, '../data/buzzwords.json');
 const JSONwords = fs.readFileSync(filePath);
 const buzzwords = JSON.parse(JSONwords);
@@ -85,3 +86,8 @@ const server = createServer((req, res) => {
 });
 
 server.listen(process.env.PORT ? process.env.PORT : 3000);
+
+// Keep awake
+setInterval(function() {
+    http.get('http://tin-man.herokuapp.com');
+}, 1000 * 60 * 5); // ping every 5 minutes
