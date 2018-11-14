@@ -1,13 +1,19 @@
 [
     "node",
-    "react",
     "react-native",
-    "iOS",
-    "MacBook",
+    "ios",
+    "macbook",
     "net neutrality",
     "algorithms",
     "ai",
     "artificial intelligence",
     "machine learning",
-    "block chain"
+	"block chain",
+	"cryptocurrency",
+	"big data",
+	"net neutrality",
+	"data mining",
+	"iot",
+	"actionable analytics",
+	"quantum computing"
 ]
