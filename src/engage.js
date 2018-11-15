@@ -3,7 +3,7 @@
 const Twit = require('twit');
 const config = require('./config');
 
-const bot = new Twit(config);
+const bot = new Twit(config.engage);
 
 // Streams account given a handle and callback function to send tweets to
 const stream = async (handle, callback) => {

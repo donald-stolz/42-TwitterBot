@@ -4,7 +4,7 @@ const Twit = require('twit');
 const config = require('./config');
 const Tabletop = require('tabletop');
 
-const bot = new Twit(config);
+const bot = new Twit(config.tweet);
 
 const spreadsheetUrl = process.env.SHEET_URL;
 
