@@ -77,6 +77,16 @@ stream('tim_cook', checkTech);
 stream('satyanadella', checkTech);
 stream('TEDTalks', checkTED);
 
+// Fixes error R10 (Boot timeout)
+const server = createServer((req, res) => {
+    res.writeHead(302, {
+        Location: `https://twitter.com/donstolz`,
+    });
+    res.end();
+});
+
+server.listen(process.env.PORT ? process.env.PORT : 3000);
+
 // Keep awake
 setInterval(function() {
     console.log('Awake');
