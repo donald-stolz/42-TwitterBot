@@ -17,9 +17,9 @@ const hour = 1000 * 60 * 60;
 // Follow 42 - Favorite every post
 // Retweet any post with more than 3 retweets in 3 hours
 const check42 = async tweet => {
+    console.log('42 Tweet');
     const id = tweet.id_str;
     favorite(id);
-    console.log('42 Tweet');
 
     setTimeout(async () => {
         t = await getStats(id);
@@ -76,16 +76,6 @@ stream('JeffBezos', checkTech);
 stream('tim_cook', checkTech);
 stream('satyanadella', checkTech);
 stream('TEDTalks', checkTED);
-
-// This will allow the bot to run on now.sh
-const server = createServer((req, res) => {
-    res.writeHead(302, {
-        Location: `https://twitter.com/donstolz`,
-    });
-    res.end();
-});
-
-server.listen(process.env.PORT ? process.env.PORT : 3000);
 
 // Keep awake
 setInterval(function() {
